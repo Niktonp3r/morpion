@@ -21,7 +21,7 @@ bool is_end(std::array<char, 9> board)
 {
   for (int i{0}; i < board.size(); i++)
   {
-    if (int(board[i] - '0') == i)
+    if (board[i] == '.')
     {
       return false;
     }
@@ -65,4 +65,14 @@ void choose_random_player_start(Player &player_1, Player &player_2)
   {
     player_2.can_play = true;
   }
+}
+
+bool valid_choice(Player player_1, Player player_2, std::array<char, 9> board)
+{
+   if(board[player_1.choice] == player_1.symbol || board[player_1.choice] == player_2.symbol)
+   {
+        std::cout << "Case déjà prise ! " << std::endl;
+        return false;
+   }
+    return true;
 }
