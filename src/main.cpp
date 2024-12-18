@@ -13,7 +13,6 @@ int main()
   draw_game_board(board);
   int choice_mode;
 
-  do
   {
     std::cout << "Choix du mode : " << std::endl;
     std::cout << "1) Classique 2 joueurs (1v1)" << std::endl;

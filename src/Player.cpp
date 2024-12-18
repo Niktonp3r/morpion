@@ -6,7 +6,7 @@ Player create_player()
     Player player;
     std::cout << "Entrez un nom : " << std::endl;
     std::cin>> player.name;
-    std::cout << "Entrez un symbole pour " << player.name << " : " << std::endl;
+    std::cout << "Entrez un symbole pour " << player.name << "  (O / X): " << std::endl;
     std::cin>> player.symbol;
     return player;
 }

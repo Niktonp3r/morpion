@@ -17,7 +17,7 @@ void classic_mode(std::array<char, 9> board)
             std::cout << "A ton tour " << player_1.name << " : " << std::endl;
             do
             {
-                std::cout << player_1.name << " : Choisir un nombre " << std::endl;
+                std::cout << player_1.name << " : Choisir un nombre (0-8) " << std::endl;
                 std::cin >> player_1.choice;
             } while (!valid_choice(player_1, player_2, board));
 
@@ -30,7 +30,7 @@ void classic_mode(std::array<char, 9> board)
             std::cout << "A ton tour " << player_1.name << " : " << std::endl;
             do
             {
-                std::cout << player_2.name << " : Choisir un nombre " << std::endl;
+                std::cout << player_2.name << " : Choisir un nombre (0-8) " << std::endl;
                 std::cin >> player_2.choice;
             } while (!valid_choice(player_2, player_1, board));
 
@@ -60,7 +60,7 @@ void IA_mode(std::array<char, 9> board)
             std::cout << "A ton tour " << player.name << " : " << std::endl;
             do
             {
-                std::cout << player.name << " : Choisir un nombre " << std::endl;
+                std::cout << player.name << " : Choisir un nombre (0-8)" << std::endl;
                 std::cin >> player.choice;
             } while (!valid_choice(player, IA, board));
 
