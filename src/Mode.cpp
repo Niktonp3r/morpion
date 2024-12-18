@@ -45,4 +45,45 @@ void classic_mode(std::array<char, 9> board)
 
 void IA_mode(std::array<char, 9> board)
 {
+
+    Player player;
+    Player IA;
+
+    player = create_player();
+    IA = create_IA(player);
+
+    choose_random_player_start(player, IA);
+    while (!is_winner(player, IA, board))
+    {
+        if (player.can_play)
+        {
+            std::cout << "A ton tour " << player.name << " : " << std::endl;
+            do
+            {
+                std::cout << player.name << " : Choisir un nombre " << std::endl;
+                std::cin >> player.choice;
+            } while (!valid_choice(player, IA, board));
+
+            board[player.choice] = player.symbol;
+            player.can_play = false;
+            IA.can_play = true;
+        }
+        else if (IA.can_play)
+        {
+            std::cout << "A ton tour " << IA.name << " : " << std::endl;
+            do
+            {
+                std::srand(std::time(nullptr));
+                int random_choice{std::rand() % 9};
+                IA.choice = random_choice;
+                
+            } while (!valid_choice(IA, player, board));
+
+            board[IA.choice] = IA.symbol;
+            IA.can_play = false;
+            player.can_play = true;
+        }
+        draw_game_board(board);
+    }
+    std::cout << "Fin de la partie" << std::endl;
 }

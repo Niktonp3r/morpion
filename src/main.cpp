@@ -7,15 +7,29 @@
 
 int main()
 {
-  std::cout << "Hello lou la skateuse!" << std::endl;
+  std::cout << "Le morpion de Lou !" << std::endl;
   std::array<char, 9> board{'.', '.', '.', '.', '.', '.', '.', '.', '.'};
 
   draw_game_board(board);
+  int choice_mode;
 
-  // TODO :Choisir le mode.
+  do
+  {
+    std::cout << "Choix du mode : " << std::endl;
+    std::cout << "1) Classique 2 joueurs (1v1)" << std::endl;
+    std::cout << "2) Contre l'IA" << std::endl;
+    std::cout << "Choix : ";
+    std::cin >> choice_mode;
+  } while (choice_mode != 1 && choice_mode != 2);
 
-  classic_mode(board);
-  // IA mode
+  if (choice_mode == 1){
+    std::cout << "Mode classique : " << std::endl;
+    classic_mode(board);
+  }
+  else {
+    std::cout << "Mode avec IA : " << std::endl;
+    IA_mode(board);
+  }
 
   return 0;
 }

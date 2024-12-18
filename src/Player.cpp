@@ -11,6 +11,17 @@ Player create_player()
     return player;
 }
 
+Player create_IA(Player player)
+{
+    Player IA_player;
+    IA_player.name = "_IA_";
+    if (player.symbol == 'X')
+        IA_player.symbol = 'O';
+    else
+        IA_player.symbol = 'X';
+    return IA_player;
+}
+
 bool Player::win(std::array<char, 9> board)
 {
     for (int i=0; i < 3; ++i){

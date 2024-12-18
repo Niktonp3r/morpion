@@ -3,7 +3,7 @@
 #include <ctime>
 #include <iostream>
 
-//dessine la grille de jeu.
+// dessine la grille de jeu.
 void draw_game_board(std::array<char, 9> board)
 {
   for (int i = 0; i < board.size(); ++i)
@@ -11,12 +11,12 @@ void draw_game_board(std::array<char, 9> board)
     std::cout << "| " << board[i] << " ";
     if ((i + 1) % 3 == 0)
     {
-      std::cout << "|"<< std::endl;
+      std::cout << "|" << std::endl;
     }
   }
 }
 
-//vérifie si la grille est totalement remplie.
+// vérifie si la grille est totalement remplie.
 bool is_end(std::array<char, 9> board)
 {
   for (int i{0}; i < board.size(); i++)
@@ -29,7 +29,7 @@ bool is_end(std::array<char, 9> board)
   return true;
 }
 
-//vérifie si il y a un gagnant ou pas.
+// vérifie si il y a un gagnant ou pas.
 bool is_winner(Player player_1, Player player_2, std::array<char, 9> board)
 {
   if (player_1.win(board))
@@ -51,10 +51,10 @@ bool is_winner(Player player_1, Player player_2, std::array<char, 9> board)
   return false;
 }
 
-//Choose a random player to start 
+// Choose a random player to start
 void choose_random_player_start(Player &player_1, Player &player_2)
 {
-    std::srand(std::time(nullptr));
+  std::srand(std::time(nullptr));
   int random_variable{std::rand() % 2};
 
   if (random_variable == 1)
@@ -69,10 +69,19 @@ void choose_random_player_start(Player &player_1, Player &player_2)
 
 bool valid_choice(Player player_1, Player player_2, std::array<char, 9> board)
 {
-   if(board[player_1.choice] == player_1.symbol || board[player_1.choice] == player_2.symbol)
-   {
-        std::cout << "Case déjà prise ! " << std::endl;
-        return false;
-   }
-    return true;
+  if (board[player_1.choice] == player_1.symbol || board[player_1.choice] == player_2.symbol)
+  {
+    if (player_1.name != "_IA_")
+    {
+      std::cout << "Case déjà prise ! " << std::endl;
+    }
+    return false;
+  }
+  else if (player_1.choice < 0 || player_1.choice > 8)
+  {
+    std::cout << "Tu joues où là ?" << std::endl;
+    return false;
+  }
+
+  return true;
 }
