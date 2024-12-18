@@ -13,21 +13,10 @@ Player create_player()
 
 bool Player::win(std::array<char, 9> board)
 {
-    //horizontal
     for (int i=0; i < 3; ++i){
-        // 0 1 2 -> i = 0 
-        // 3 4 5 -> i = 1 
-        // 6 7 8 -> i = 2 
-        // (i*3) (i*3 + 1) (i*3 + 2)
-    
         if (board[i*3]== symbol && board[i*3+1]== symbol && board[i*3+2] == symbol){ 
             return true;
         }
-
-        // 0 1 2 -> i = 0 
-        // 3 4 5 -> i = 1 
-        // 6 7 8 -> i = 2 
-        // (i) (i+3) (i+6)
         if (board[i]== symbol && board[i+3]== symbol && board[i+6] == symbol){ 
             return true;
         }      
