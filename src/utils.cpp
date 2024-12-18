@@ -1,4 +1,6 @@
 #include "utils.hpp"
+#include <cstdlib>
+#include <ctime>
 #include <iostream>
 
 //dessine la grille de jeu.
@@ -47,4 +49,20 @@ bool is_winner(Player player_1, Player player_2, std::array<char, 9> board)
   }
 
   return false;
+}
+
+//Choose a random player to start 
+void choose_random_player_start(Player &player_1, Player &player_2)
+{
+    std::srand(std::time(nullptr));
+  int random_variable{std::rand() % 2};
+
+  if (random_variable == 1)
+  {
+    player_1.can_play = true;
+  }
+  else
+  {
+    player_2.can_play = true;
+  }
 }

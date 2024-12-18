@@ -2,8 +2,6 @@
 #include <iostream>
 #include <array>
 #include <typeinfo>
-#include <cstdlib>
-#include <ctime>
 #include "utils.hpp"
 
 
@@ -20,17 +18,7 @@ int main()
   player_1 = create_player();
   player_2 = create_player();
 
-  std::srand(std::time(nullptr));
-  int random_variable{std::rand() % 2};
-
-  if (random_variable == 1)
-  {
-    player_1.can_play = true;
-  }
-  else
-  {
-    player_2.can_play = true;
-  }
+  choose_random_player_start(player_1,player_2);
 
   while (!is_winner(player_1, player_2, board))
   {
